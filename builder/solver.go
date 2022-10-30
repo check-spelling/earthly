@@ -26,7 +26,7 @@ type solver struct {
 	sm              *outmon.SolverMonitor
 	bkClient        *client.Client
 	attachables     []session.Attachable
-	enttlmnts       []entitlements.Entitlement
+	entitlements    []entitlements.Entitlement
 	cacheImports    *states.CacheImports
 	cacheExport     string
 	maxCacheExport  string
@@ -127,7 +127,7 @@ func (s *solver) newSolveOptMulti(ctx context.Context, eg *errgroup.Group, onIma
 		CacheImports:        cacheImports,
 		CacheExports:        cacheExports,
 		Session:             s.attachables,
-		AllowedEntitlements: s.enttlmnts,
+		AllowedEntitlements: s.entitlements,
 	}, nil
 }
 

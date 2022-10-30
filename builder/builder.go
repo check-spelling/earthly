@@ -55,7 +55,7 @@ type Opt struct {
 	Console                               conslogging.ConsoleLogger
 	Verbose                               bool
 	Attachables                           []session.Attachable
-	Enttlmnts                             []entitlements.Entitlement
+	Entitlements                          []entitlements.Entitlement
 	NoCache                               bool
 	CacheImports                          *states.CacheImports
 	CacheExport                           string
@@ -117,7 +117,7 @@ func NewBuilder(ctx context.Context, opt Opt) (*Builder, error) {
 			cacheExport:     opt.CacheExport,
 			maxCacheExport:  opt.MaxCacheExport,
 			attachables:     opt.Attachables,
-			enttlmnts:       opt.Enttlmnts,
+			entitlements:    opt.Entitlements,
 			saveInlineCache: opt.SaveInlineCache,
 		},
 		opt:      opt,
@@ -211,7 +211,7 @@ func (b *Builder) convertAndBuild(ctx context.Context, target domain.Target, opt
 		}
 
 		// WARNING: the code below is deprecated, and will eventually be removed, in favour of wait_block.go
-		// This code is only used when dealing with VERISON 0.5 and 0.6; once these reach end-of-life, we can
+		// This code is only used when dealing with VERSION 0.5 and 0.6; once these reach end-of-life, we can
 		// delete the code below.
 
 		// *** DO NOT ADD CODE TO THE bf BELOW ***

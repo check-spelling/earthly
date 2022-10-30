@@ -32,7 +32,7 @@ func newTarImageSolver(opt Opt, sm *outmon.SolverMonitor) *tarImageSolver {
 		sm:           sm,
 		bkClient:     opt.BkClient,
 		attachables:  opt.Attachables,
-		enttlmnts:    opt.Enttlmnts,
+		entitlements: opt.Entitlements,
 		cacheImports: opt.CacheImports,
 	}
 }
@@ -41,7 +41,7 @@ type tarImageSolver struct {
 	bkClient     *client.Client
 	sm           *outmon.SolverMonitor
 	attachables  []session.Attachable
-	enttlmnts    []entitlements.Entitlement
+	entitlements []entitlements.Entitlement
 	cacheImports *states.CacheImports
 }
 
@@ -69,7 +69,7 @@ func (s *tarImageSolver) newSolveOpt(img *image.Image, dockerTag string, w io.Wr
 		},
 		CacheImports:        cacheImports,
 		Session:             s.attachables,
-		AllowedEntitlements: s.enttlmnts,
+		AllowedEntitlements: s.entitlements,
 	}, nil
 }
 
@@ -159,7 +159,7 @@ type multiImageSolver struct {
 	bkClient     *client.Client
 	sm           *outmon.SolverMonitor
 	attachables  []session.Attachable
-	enttlmnts    []entitlements.Entitlement
+	entitlements []entitlements.Entitlement
 	cacheImports *states.CacheImports
 }
 
@@ -168,7 +168,7 @@ func newMultiImageSolver(opt Opt, sm *outmon.SolverMonitor) *multiImageSolver {
 		sm:           sm,
 		bkClient:     opt.BkClient,
 		attachables:  opt.Attachables,
-		enttlmnts:    opt.Enttlmnts,
+		entitlements: opt.Entitlements,
 		cacheImports: opt.CacheImports,
 	}
 }
@@ -315,7 +315,7 @@ func (m *multiImageSolver) SolveImages(ctx context.Context, imageDefs []*states.
 		},
 		CacheImports:        cacheImports,
 		Session:             m.attachables,
-		AllowedEntitlements: m.enttlmnts,
+		AllowedEntitlements: m.entitlements,
 	}
 
 	var vertexFailureOutput string

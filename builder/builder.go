@@ -55,7 +55,7 @@ type Opt struct {
 	Console                               conslogging.ConsoleLogger
 	Verbose                               bool
 	Attachables                           []session.Attachable
-	Enttlmnts                             []entitlements.Entitlement
+	Entitlements                          []entitlements.Entitlement
 	NoCache                               bool
 	CacheImports                          *states.CacheImports
 	CacheExport                           string
@@ -117,7 +117,7 @@ func NewBuilder(ctx context.Context, opt Opt) (*Builder, error) {
 			cacheExport:     opt.CacheExport,
 			maxCacheExport:  opt.MaxCacheExport,
 			attachables:     opt.Attachables,
-			enttlmnts:       opt.Enttlmnts,
+			entitlements:    opt.Entitlements,
 			saveInlineCache: opt.SaveInlineCache,
 		},
 		opt:      opt,

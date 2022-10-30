@@ -362,9 +362,9 @@ func (app *earthlyApp) actionBuildImp(cliCtx *cli.Context, flagArgs, nonFlagArgs
 	}
 	attachables = append(attachables, socketProvider)
 
-	var enttlmnts []entitlements.Entitlement
+	var entitlements []entitlements.Entitlement
 	if app.allowPrivileged {
-		enttlmnts = append(enttlmnts, entitlements.EntitlementSecurityInsecure)
+		entitlements = append(entitlements, entitlements.EntitlementSecurityInsecure)
 	}
 
 	overridingVars, err := app.combineVariables(dotEnvMap, flagArgs)
@@ -410,7 +410,7 @@ func (app *earthlyApp) actionBuildImp(cliCtx *cli.Context, flagArgs, nonFlagArgs
 		Console:                               app.console,
 		Verbose:                               app.verbose,
 		Attachables:                           attachables,
-		Enttlmnts:                             enttlmnts,
+		Entitlements:                          entitlements,
 		NoCache:                               app.noCache,
 		CacheImports:                          states.NewCacheImports(cacheImports),
 		CacheExport:                           cacheExport,
